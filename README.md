@@ -3,6 +3,9 @@
 #### Speedy app builder中的form调用后台micro service/REST API平台中的api. 
 
 
-Open your browser and point to http://localhost:5000/
+The steps are as follows:
+1. Navigate to the `medical_AI_Speedy_APP` directory from the command line and run `serve`.
+
+2. Go to [http://localhost:5000](http://localhost:5000) in your browser to see the application.
 
 ![Index Page](https://github.com/JenifferWuUCLA/simple-restful-api-angularjs/blob/master/public/image/Patient%20index%20page.png)
