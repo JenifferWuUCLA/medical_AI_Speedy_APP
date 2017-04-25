@@ -1,6 +1,10 @@
 var app = angular.module('myApp', ['ngResource', 'ngProgress', 'ngAnimate', 'toaster']);
+
 app.config(function ($httpProvider) {
   $httpProvider.interceptors.push('myHttpInterceptor');
+  $httpProvider.defaults.useXDomain = true;
+  $httpProvider.defaults.headers.common = 'Content-Type: application/json';
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 });
 
 // Handle http server errors
