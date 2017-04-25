@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+    <title>Simple demonstration of AngularJS with ReSTful API - AngularCode</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/ngProgress.css">
+    <link rel="stylesheet" href="css/toaster.css">
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body ng-cloak>
+<div class="container" ng-controller="PatientCtrl">
+    <form name="Codenx" novalidate>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>AGE</th>
+                <th>GENDER</th>
+                <th>ZIP CODE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input class="form-control" ng-model="patient.name" required="" placeholder="Patient Name"></td>
+                <td><input class="form-control" ng-model="patient.DOB" placeholder="Patient DOB"></td>
+                <td><input class="form-control" ng-model="patient.age" placeholder="Patient age"></td>
+                <td><input class="form-control" ng-model="patient.gender" placeholder="Patient gender"></td>
+                <td><input class="form-control" ng-model="patient.zipcode" placeholder="Patient zipcode"></td>
+                <td><button class="btn btn-primary" ng-click="add(patient)" ng-if="!patient._id" type="submit" ng-disabled="!Codenx.$valid">Add Patient</button>
+                    <div class="btn-group">
+                        <button class="btn btn-info" ng-click="update(patient)" ng-if="patient._id" type="submit">Update</button>
+                        <button class="btn" ng-click="deselect()" ng-if="patient._id">Clear</button>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-repeat="patient in patients">
+                <td>{{patient.name}}</td>
+                <td>{{patient.DOB}}</td>
+                <td>{{patient.age}}</td>
+                <td>{{patient.gender}}</td>
+                <td>{{patient.zipcode}}</td>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-danger" ng-click="remove(patient)">Remove</button>
+                        <button class="btn btn-warning" ng-click="edit(patient._id)">Edit</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<div data-loading></div>
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/ngProgress.min.js"></script>
+<script src="js/toaster.js"></script>
+<script src="app/app.js"></script>
+<script src="app/patients.js"></script>
+</body>
+</html>
