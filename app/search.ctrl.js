@@ -1,44 +1,60 @@
 //Demo of Searching Sorting and Pagination of Table with AngularJS - Advance Example
 
-var myApp = angular.module("myApp", ['angular-popups', 'jkuri.datepicker']);
+var app = angular.module("myApp", ['ngResource', 'angular-popups', 'jkuri.datepicker']);
 
+app.factory('Patient', function($resource) {
+    return $resource('http://localhost:3000/api/patients/:id', { id: '@_id' }, {
+        update: { // We need to define this method manually as it is not provided with ng-resource
+            method: 'PUT'
+        }
+    });
+});
 
 //Not Necessary to Create Service, Same can be done in COntroller also as method like add() method
-myApp.service('filteredListService', function () {
+app.service('filteredListService', function () {
 
     this.searched = function (valLists, toSearch) {
-        //alert('toSearch: '+toSearch);
+        //alert('toSearch: ' + toSearch);
         return _.filter(valLists,
 
             function (i) {
                 /* Search Text in all 3 fields */
+                //alert('toSearch: ' + toSearch);
                 return searchUtil(i, toSearch);
             });
     };
 
     this.paged = function (valLists, pageSize) {
-        retVal = [];
-        for (var i = 0; i < valLists.length; i++) {
-            //alert('valLists[i]: '+valLists[i].name+', '+valLists[i].gender);
-            if (i % pageSize === 0) {
-                retVal[Math.floor(i / pageSize)] = [valLists[i]];
-            } else {
-                retVal[Math.floor(i / pageSize)].push(valLists[i]);
+        var retVal = [];
+        if (valLists !== undefined) {
+            for (var i = 0; i < valLists.length; i++) {
+                //alert('valLists[i]: '+valLists[i].name+', '+valLists[i].gender);
+                if (i % pageSize === 0) {
+                    retVal[Math.floor(i / pageSize)] = [valLists[i]];
+                } else {
+                    retVal[Math.floor(i / pageSize)].push(valLists[i]);
+                }
             }
         }
 
+        //alert('paged retVal : '+JSON.stringify(retVal));
         return retVal;
     };
 
 });
 
 //Inject Custom Service Created by us and Global service $filter. This is one way of specifying dependency Injection
-myApp.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredListService) {
+app.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredListService) {
 
-    //alert('$scope_TableCtrl: '+JSON.stringify($scope));
+    $scope.ItemsByPage = Patient.query();
+    $scope.allItems = Patient.query();
 
-    $scope.patient = new Patient();
+    /*$scope.allItems = getDummyData($scope, $http, Patient);
+    alert('$scope.allItems return : '+JSON.stringify($scope.allItems));
+    $scope.ItemsByPage = getDummyData($scope, $http, Patient);
+    alert('$scope.ItemsByPage return : '+JSON.stringify($scope.ItemsByPage));*/
 
+    // getDummyData($scope, $http, Patient); start
     var headers = {
         'Access-Control-Allow-Origin' : '*',
         'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT',
@@ -46,32 +62,46 @@ myApp.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredList
         'Accept': 'application/json'
     };
 
-    $scope.pageSize = 4;
-
-    $scope.allItems = Patient.query();
+    $scope.ItemsByPage = Patient.query();
+    $scope.allItems = Patient.query()
 
     var url = "http://localhost:3000/api/patients";
 
     $http({
-        method: 'JSONP',
+        method: 'GET',
         headers: headers,
         url: url
     }).
     success(function(result) {
         //your code when success
+        //alert('success result: '+result);
+        //alert('success');
+
+        $scope.ItemsByPage = result;
         $scope.allItems = result;
+
+        //alert('$scope.ItemsByPage return : '+JSON.stringify($scope.ItemsByPage));
+        //alert('$scope.allItems return : '+JSON.stringify($scope.allItems));
+
+        //By Default sort ny Name
+        $scope.sort('name');
+
     }).
-    error(function(data, status, headers, config) {
+    error(function() {
         //your code when fails
+        //alert('error');
     });
+    // getDummyData($scope, $http, Patient); end
 
-    /*$http.get("http://localhost:3000/api/patients")
-        .then(function(response){ $scope.allItems = response.data; });*/
-
+    $scope.pageSize = 4;
     $scope.reverse = false;
 
     $scope.resetAll = function () {
+        //alert('$scope.resetAll = function () {... ... ...}');
+        //getDummyData($scope, $http, Patient);
         $scope.filteredList = $scope.allItems;
+        //alert('$scope.allItems resetAll : '+JSON.stringify($scope.allItems));
+        //alert('$scope.filteredList_resetAll: '+JSON.stringify($scope.filteredList));
         $scope.newName = '';
         $scope.newDOB = '';
         $scope.newAge = '';
@@ -94,8 +124,10 @@ myApp.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredList
     }
 
     $scope.search = function () {
+        //alert('$scope.allItems: '+JSON.stringify($scope.allItems));
         $scope.filteredList = filteredListService.searched($scope.allItems, $scope.searchText);
 
+        //alert('$scope.searchText: '+JSON.stringify($scope.searchText));
         if ($scope.searchText == '') {
             $scope.filteredList = $scope.allItems;
         }
@@ -131,19 +163,24 @@ myApp.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredList
 
     // Calculate Total Number of Pages based on Search Result
     $scope.pagination = function () {
+        //alert('$scope.filteredList_pagination: '+JSON.stringify($scope.filteredList));
         $scope.ItemsByPage = filteredListService.paged($scope.filteredList, $scope.pageSize);
-        //alert('$scope.ItemsByPage_TableCtrl: '+JSON.stringify($scope.ItemsByPage));
+        //alert('$scope.ItemsByPage_pagination: '+JSON.stringify($scope.ItemsByPage));
     };
 
     $scope.setPage = function () {
+        //alert('$scope.setPage = function () {... ... ...}');
         $scope.currentPage = this.n;
+        //alert('$scope.currentPage: '+JSON.stringify($scope.currentPage));
     };
 
     $scope.firstPage = function () {
+        //alert('$scope.firstPage = function () {... ... ...}');
         $scope.currentPage = 0;
     };
 
     $scope.lastPage = function () {
+        //alert('$scope.lastPage = function () {... ... ...}');
         $scope.currentPage = $scope.ItemsByPage.length - 1;
     };
 
@@ -163,12 +200,14 @@ myApp.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredList
     };
 
     $scope.sort = function (sortBy) {
+        //alert('$scope.sort = function (sortBy) {... ... ...}');
         $scope.resetAll();
 
         $scope.columnToOrder = sortBy;
 
         //$Filter - Standard Service
         $scope.filteredList = $filter('orderBy')($scope.filteredList, $scope.columnToOrder, $scope.reverse);
+        //alert('$scope.filteredList_sort: '+JSON.stringify($scope.filteredList));
 
         if ($scope.reverse) iconName = 'glyphicon glyphicon-chevron-up';
         else iconName = 'glyphicon glyphicon-chevron-down';
@@ -190,12 +229,11 @@ myApp.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredList
         $scope.pagination();
     };
 
-    //By Default sort ny Name
-    $scope.sort('name');
 
 });
 
 function searchUtil(item, toSearch) {
     /* Search Text in all 3 fields */
+    //alert(item.name.toLowerCase().indexOf(toSearch.toLowerCase()) );
     return (item.name.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.DOB == toSearch || item.age == toSearch || item.gender == toSearch || item.zipcode == toSearch) ? true : false;
 }
