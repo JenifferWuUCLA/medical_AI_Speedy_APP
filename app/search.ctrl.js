@@ -49,11 +49,6 @@ app.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredListSe
     $scope.ItemsByPage = Patient.query();
     $scope.allItems = Patient.query();
 
-    /*$scope.allItems = getDummyData($scope, $http, Patient);
-    alert('$scope.allItems return : '+JSON.stringify($scope.allItems));
-    $scope.ItemsByPage = getDummyData($scope, $http, Patient);
-    alert('$scope.ItemsByPage return : '+JSON.stringify($scope.ItemsByPage));*/
-
     // getDummyData($scope, $http, Patient); start
     var headers = {
         'Access-Control-Allow-Origin' : '*',
@@ -80,9 +75,6 @@ app.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredListSe
         $scope.ItemsByPage = result;
         $scope.allItems = result;
 
-        //alert('$scope.ItemsByPage return : '+JSON.stringify($scope.ItemsByPage));
-        //alert('$scope.allItems return : '+JSON.stringify($scope.allItems));
-
         //By Default sort ny Name
         $scope.sort('name');
 
@@ -97,8 +89,6 @@ app.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredListSe
     $scope.reverse = false;
 
     $scope.resetAll = function () {
-        //alert('$scope.resetAll = function () {... ... ...}');
-        //getDummyData($scope, $http, Patient);
         $scope.filteredList = $scope.allItems;
         //alert('$scope.allItems resetAll : '+JSON.stringify($scope.allItems));
         //alert('$scope.filteredList_resetAll: '+JSON.stringify($scope.filteredList));
@@ -200,7 +190,6 @@ app.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredListSe
     };
 
     $scope.sort = function (sortBy) {
-        //alert('$scope.sort = function (sortBy) {... ... ...}');
         $scope.resetAll();
 
         $scope.columnToOrder = sortBy;
