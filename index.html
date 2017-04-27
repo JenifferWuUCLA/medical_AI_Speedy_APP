@@ -22,6 +22,9 @@
                 <th>AGE</th>
                 <th>GENDER</th>
                 <th>ZIP CODE</th>
+                <th>Phone Number</th>
+                <th>Preferred Language</th>
+                <th>Smoking Status</th>
             </tr>
             </thead>
             <tbody>
@@ -31,6 +34,9 @@
                 <td><input class="form-control" ng-model="patient.age" placeholder="Patient age"></td>
                 <td><input class="form-control" ng-model="patient.gender" placeholder="Patient gender"></td>
                 <td><input class="form-control" ng-model="patient.zipcode" placeholder="Patient zipcode"></td>
+                <td><input class="form-control" ng-model="patient.phoneNumber" placeholder="Patient phoneNumber"></td>
+                <td><input class="form-control" ng-model="patient.preferredLanguage" placeholder="Patient preferredLanguage"></td>
+                <td><input class="form-control" ng-model="patient.smokingStatus" placeholder="Patient smokingStatus"></td>
                 <td><button class="btn btn-primary" ng-click="add(patient)" ng-if="!patient._id" type="submit" ng-disabled="!Codenx.$valid">Add Patient</button>
                     <div class="btn-group">
                         <button class="btn btn-info" ng-click="update(patient)" ng-if="patient._id" type="submit">Update</button>
@@ -44,6 +50,9 @@
                 <td>{{patient.age}}</td>
                 <td>{{patient.gender}}</td>
                 <td>{{patient.zipcode}}</td>
+                <td>{{patient.phoneNumber}}</td>
+                <td>{{patient.preferredLanguage}}</td>
+                <td>{{patient.smokingStatus}}</td>
                 <td>
                     <div class="btn-group">
                         <button class="btn btn-danger" ng-click="remove(patient)">Remove</button>

@@ -1,0 +1,94 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+    <title>Simple demonstration of AngularJS with ReSTful API - AngularCode</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/ngProgress.css">
+    <link rel="stylesheet" href="css/toaster.css">
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
+</head>
+<body ng-cloak>
+<div class="container" ng-controller="DiagnosticCtrl">
+    <form name="Codenx" novalidate>
+        <table class="table" style="width:2000px">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Diagnostic Period</th>
+                <th>Encounter Type</th>
+                <th>Visit Reason</th>
+                <th>Physician</th>
+                <th>Facility</th>
+                <th>Weight</th>
+                <th>Height</th>
+                <th>BMI</th>
+                <th>Temperature</th>
+                <th>Blood Pressure</th>
+                <th>Pulse</th>
+                <th>Respiratory Rate</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td><input class="form-control" ng-model="diagnostic.name" required="" placeholder="Name"></td>
+                <td><input class="form-control" ng-model="diagnostic.diagnosticPeriod" placeholder="Diagnostic Period"></td>
+                <td><input class="form-control" ng-model="diagnostic.encounterType" placeholder="Encounter Type"></td>
+                <td><input class="form-control" ng-model="diagnostic.visitReason" placeholder="Visit Reason"></td>
+                <td><input class="form-control" ng-model="diagnostic.physician" placeholder="Physician"></td>
+                <td><input class="form-control" ng-model="diagnostic.facility" placeholder="Facility"></td>
+                <td><input class="form-control" ng-model="diagnostic.weight" placeholder="Weight"></td>
+                <td><input class="form-control" ng-model="diagnostic.height" placeholder="Height"></td>
+                <td><input class="form-control" ng-model="diagnostic.BMI" placeholder="BMI"></td>
+                <td><input class="form-control" ng-model="diagnostic.temperature" placeholder="Temperature"></td>
+                <td><input class="form-control" ng-model="diagnostic.bloodPressure" placeholder="Blood Pressure"></td>
+                <td><input class="form-control" ng-model="diagnostic.pulse" placeholder="Pulse"></td>
+                <td><input class="form-control" ng-model="diagnostic.respiratoryRate" placeholder="Respiratory Rate"></td>
+                <td><button class="btn btn-primary" ng-click="add(diagnostic)" ng-if="!diagnostic._id" type="submit" ng-disabled="!Codenx.$valid">Add diagnostic</button>
+                    <div class="btn-group">
+                        <button class="btn btn-info" ng-click="update(diagnostic)" ng-if="diagnostic._id" type="submit">Update</button>
+                        <button class="btn" ng-click="deselect()" ng-if="diagnostic._id">Clear</button>
+                    </div>
+                </td>
+            </tr>
+            <tr ng-repeat="diagnostic in diagnostics">
+                <td>{{diagnostic.name}}</td>
+                <td>{{diagnostic.diagnosticPeriod}}</td>
+                <td>{{diagnostic.encounterType}}</td>
+                <td>{{diagnostic.visitReason}}</td>
+                <td>{{diagnostic.physician}}</td>
+                <td>{{diagnostic.facility}}</td>
+                <td>{{diagnostic.weight}}</td>
+                <td>{{diagnostic.height}}</td>
+                <td>{{diagnostic.BMI}}</td>
+                <td>{{diagnostic.temperature}}</td>
+                <td>{{diagnostic.bloodPressure}}</td>
+                <td>{{diagnostic.pulse}}</td>
+                <td>{{diagnostic.respiratoryRate}}</td>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-danger" ng-click="remove(diagnostic)">Remove</button>
+                        <button class="btn btn-warning" ng-click="edit(diagnostic._id)">Edit</button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<div data-loading></div>
+<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-center'}"></toaster-container>
+
+<script src="js/angular.min.js"></script>
+<script src="js/angular-resource.min.js"></script>
+<script src="js/angular-animate.min.js"></script>
+<script src="js/ngProgress.min.js"></script>
+<script src="js/toaster.js"></script>
+<script src="app/app.js"></script>
+<script src="app/diagnostics.js"></script>
+</body>
+</html>

@@ -53,3 +53,11 @@ app.factory('Patient', function($resource) {
         }
     });
 });
+
+app.factory('Diagnostic', function($resource) {
+    return $resource('http://localhost:3000/api/diagnostics/:id', { id: '@_id' }, {
+        update: { // We need to define this method manually as it is not provided with ng-resource
+            method: 'PUT'
+        }
+    });
+});

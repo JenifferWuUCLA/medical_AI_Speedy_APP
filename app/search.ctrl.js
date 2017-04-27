@@ -1,14 +1,6 @@
 //Demo of Searching Sorting and Pagination of Table with AngularJS - Advance Example
 
-var app = angular.module("myApp", ['ngResource', 'angular-popups', 'jkuri.datepicker']);
-
-app.factory('Patient', function($resource) {
-    return $resource('http://localhost:3000/api/patients/:id', { id: '@_id' }, {
-        update: { // We need to define this method manually as it is not provided with ng-resource
-            method: 'PUT'
-        }
-    });
-});
+var app = angular.module("myApp", ['angular-popups', 'jkuri.datepicker']);
 
 //Not Necessary to Create Service, Same can be done in COntroller also as method like add() method
 app.service('filteredListService', function () {
@@ -44,10 +36,7 @@ app.service('filteredListService', function () {
 });
 
 //Inject Custom Service Created by us and Global service $filter. This is one way of specifying dependency Injection
-app.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredListService) {
-
-    $scope.ItemsByPage = Patient.query();
-    $scope.allItems = Patient.query();
+app.controller('Ctrl', function ($scope, $http, $filter, filteredListService) {
 
     // getDummyData($scope, $http, Patient); start
     var headers = {
@@ -56,9 +45,6 @@ app.controller('Ctrl', function ($scope, $http, Patient, $filter, filteredListSe
         'Content-Type': 'application/json',
         'Accept': 'application/json'
     };
-
-    $scope.ItemsByPage = Patient.query();
-    $scope.allItems = Patient.query()
 
     var url = "http://localhost:3000/api/patients";
 

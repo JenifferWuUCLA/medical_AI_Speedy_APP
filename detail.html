@@ -18,8 +18,8 @@
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
     <script src="http://underscorejs.org/underscore.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
-    <script src="app.js"></script>
-    <script src="detail.ctrl.js"></script>
+    <!--<script src="app.js"></script>-->
+    <script src="app/detail.ctrl.js"></script>
 </head>
 
 <body>
@@ -65,12 +65,12 @@
             <div class="row">
                 <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
                     <ul class="nav nav-pills flex-column">
-                        <li class="nav-item">
+                        <li class="nav-item" ng-model="diagnostic">
                             <span class="active" style="color:white">
                                 <img style="height:70px;width:65px" src="image/patient_avatar.png" />
                             </span>
-                            <span style="color:black"><bold>Marry Grant </bold><br/><br/></span>
-                            <span style="color:green"><bold>12/03/2013 - 12/06/2013 </bold><br/><br/></span>
+                            <span style="color:black"><bold>{{diagnostic.name}} </bold><br/><br/></span>
+                            <span style="color:green"><bold>{{diagnostic.diagnosticPeriod}} </bold><br/><br/></span>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">
@@ -88,20 +88,20 @@
                             <tbody>
                             <tr ng-model="profile">
                                 <td>
-                                    {{profile.Basic}}<br/>
+                                    {{profile.gender}},&nbsp;age&nbsp;{{profile.age}}<br/>
                                     {{profile.DOB}}
                                 </td>
                                 <td>
                                     <span style="color:gray">Phone number </span><br/>
-                                    {{profile.PhoneNumber}}
+                                    {{profile.phoneNumber}}
                                 </td>
                                 <td>
                                     <span style="color:gray">Preferred language </span><br/>
-                                    {{profile.PreferredLanguage}}
+                                    {{profile.preferredLanguage}}
                                 </td>
                                 <td>
                                     <span style="color:gray">Smoking status </span><br/>
-                                    {{profile.SmokingStatus}}
+                                    {{profile.smokingStatus}}
                                 </td>
                             </tr>
                             </tbody>
@@ -125,11 +125,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-model="status">
-                                <td>{{status.EncounterType}}</td>
-                                <td>{{status.VisitReason}}</td>
-                                <td>{{status.Physician}}</td>
-                                <td>{{status.Facility}}</td>
+                            <tr ng-model="diagnostic">
+                                <td>{{diagnostic.encounterType}}</td>
+                                <td>{{diagnostic.visitReason}}</td>
+                                <td>{{diagnostic.physician}}</td>
+                                <td>{{diagnostic.facility}}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -157,25 +157,44 @@
                                 </th>
                             </tr>
                             </thead>
-                            <tbody>
-                            <tr ng-repeat="item in ItemsByPage[currentPage] | orderBy:columnToOrder:reverse">
-                                <td>{{item.Vital}}</td>
-                                <td>{{item.LastRecorded}}</td>
-                                <td>{{item.DateTime}}</td>
+                            <tbody ng-model="diagnostic">
+                            <tr>
+                                <td>Weight</td>
+                                <td>{{diagnostic.weight}}</td>
+                                <td>{{diagnostic.modified}}</td>
+                            </tr>
+                            <tr>
+                                <td>Height</td>
+                                <td>{{diagnostic.height}}</td>
+                                <td>{{diagnostic.modified}}</td>
+                            </tr>
+                            <tr>
+                                <td>BMI</td>
+                                <td>{{diagnostic.BMI}}</td>
+                                <td>{{diagnostic.modified}}</td>
+                            </tr>
+                            <tr>
+                                <td>Temperature</td>
+                                <td>{{diagnostic.temperature}}</td>
+                                <td>{{diagnostic.modified}}</td>
+                            </tr>
+                            <tr>
+                                <td>Blood Pressure</td>
+                                <td>{{diagnostic.bloodPressure}}</td>
+                                <td>{{diagnostic.modified}}</td>
+                            </tr>
+                            <tr>
+                                <td>Pulse</td>
+                                <td>{{diagnostic.pulse}}</td>
+                                <td>{{diagnostic.modified}}</td>
+                            </tr>
+                            <tr>
+                                <td>Respiratory Rate</td>
+                                <td>{{diagnostic.respiratoryRate}}</td>
+                                <td>{{diagnostic.modified}}</td>
                             </tr>
                             </tbody>
                         </table>
-                        <ul class="pagination pagination-sm">
-                            <li ng-class="{active:0}">
-                                <a href="#" ng-click="firstPage()">First</a>
-                            </li>
-                            <li ng-repeat="n in range(ItemsByPage.length)">
-                                <a href="#" ng-click="setPage()" ng-bind="n+1">1</a>
-                            </li>
-                            <li>
-                                <a href="#" ng-click="lastPage()">Last</a>
-                            </li>
-                        </ul>
                     </div>
                 </main>
             </div>
