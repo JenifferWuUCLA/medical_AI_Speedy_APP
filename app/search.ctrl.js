@@ -46,7 +46,7 @@ app.controller('Ctrl', function ($scope, $http, $filter, filteredListService) {
         'Accept': 'application/json'
     };
 
-    var url = "http://localhost:3000/api/patients";
+    var url = "http://101.37.36.41:3020/api/patients";
 
     $http({
         method: 'GET',

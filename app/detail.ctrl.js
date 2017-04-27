@@ -18,7 +18,7 @@ app.controller('TableCtrl', function ($scope, $http) {
         // getProfileData($scope, $http, Patient); start
         //$scope.profile = Patient.query();
 
-        var url = "http://localhost:3000/api/patients?name=" + patient_name;
+        var url = "http://101.37.36.41:3020/api/patients?name=" + patient_name;
 
         $http({
             method: 'GET',
@@ -40,7 +40,7 @@ app.controller('TableCtrl', function ($scope, $http) {
         // getDiagnosticData($scope, $http, Diagnostic); start
         //$scope.diagnostic = Diagnostic.query();
 
-        var url = "http://localhost:3000/api/diagnostics?name=" + patient_name;
+        var url = "http://101.37.36.41:3020/api/diagnostics?name=" + patient_name;
 
         $http({
             method: 'GET',

@@ -47,7 +47,7 @@ app.directive('loading',   ['$http', 'ngProgress', function ($http, ngProgress)
 }]);
 
 app.factory('Patient', function($resource) {
-    return $resource('http://localhost:3000/api/patients/:id', { id: '@_id' }, {
+    return $resource('http://101.37.36.41:3020/api/patients/:id', { id: '@_id' }, {
         update: { // We need to define this method manually as it is not provided with ng-resource
             method: 'PUT'
         }
@@ -55,7 +55,7 @@ app.factory('Patient', function($resource) {
 });
 
 app.factory('Diagnostic', function($resource) {
-    return $resource('http://localhost:3000/api/diagnostics/:id', { id: '@_id' }, {
+    return $resource('http://101.37.36.41:3020/api/diagnostics/:id', { id: '@_id' }, {
         update: { // We need to define this method manually as it is not provided with ng-resource
             method: 'PUT'
         }

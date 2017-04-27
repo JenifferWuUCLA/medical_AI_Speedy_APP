@@ -12,7 +12,7 @@ app.controller('PatientCtrl', function($scope, $http, Patient) {
     var refresh = function() {
         $scope.patients = Patient.query();
 
-        var url = "http://localhost:3000/api/patients";
+        var url = "http://101.37.36.41:3020/api/patients";
 
         $http({
             method: 'JSONP',
