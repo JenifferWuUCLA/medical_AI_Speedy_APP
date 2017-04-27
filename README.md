@@ -12,6 +12,7 @@ The steps are as follows:
 3. Go to [http://localhost:5000/search.html](http://localhost:5000/search.html) in your browser to see the application.
 
 ![Search Page](https://github.com/JenifferWuUCLA/medical_AI_Speedy_APP/blob/master/image/Speedy%20app%20search%20page.png)
+
 4. Go to [http://localhost:5000/detail.html](http://localhost:5000/detail.html) in your browser to see the application.
 
 ![Search Page](https://github.com/JenifferWuUCLA/medical_AI_Speedy_APP/blob/master/image/Speedy%20app%20diagnostic%20page.png)
