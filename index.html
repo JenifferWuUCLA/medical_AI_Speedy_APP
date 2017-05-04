@@ -17,6 +17,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th>MRN</th>
                 <th>Name</th>
                 <th>DOB</th>
                 <th>AGE</th>
@@ -45,8 +46,9 @@
                 </td>
             </tr>
             <tr ng-repeat="patient in patients">
+                <td>{{patient.MRN}}</td>
                 <td>{{patient.name}}</td>
-                <td>{{patient.DOB}}</td>
+                <td>{{patient.DOB|date:"MM/dd/y"}}</td>
                 <td>{{patient.age}}</td>
                 <td>{{patient.gender}}</td>
                 <td>{{patient.zipcode}}</td>

@@ -159,7 +159,7 @@
               <tbody>
               <tr ng-repeat="item in ItemsByPage[currentPage] | orderBy:columnToOrder:reverse">
                 <td>{{item.name}}</td>
-                <td>{{item.DOB}}</td>
+                <td>{{item.DOB|date:"MM/dd/y"}}</td>
                 <td>{{item.age}}</td>
                 <td>{{item.gender}}</td>
                 <td>{{item.zipcode}}</td>
