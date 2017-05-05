@@ -51,7 +51,7 @@ app.controller('DiagnosticCtrl', function($scope, $http, Diagnostic) {
     };
 
     $scope.edit = function(id) {
-        $scope.diagnostic = Patient.get({ id: id });
+        $scope.diagnostic = Diagnostic.get({ id: id });
     };
 
     $scope.deselect = function() {
