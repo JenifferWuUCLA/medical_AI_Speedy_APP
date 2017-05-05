@@ -34,6 +34,7 @@
             </thead>
             <tbody>
             <tr>
+                <td><input class="form-control" ng-model="diagnostic.MRN" required="" placeholder="MRN"></td>
                 <td><input class="form-control" ng-model="diagnostic.name" required="" placeholder="Name"></td>
                 <td><input class="form-control" ng-model="diagnostic.diagnosticPeriod" placeholder="Diagnostic Period"></td>
                 <td><input class="form-control" ng-model="diagnostic.encounterType" placeholder="Encounter Type"></td>
@@ -55,6 +56,7 @@
                 </td>
             </tr>
             <tr ng-repeat="diagnostic in diagnostics">
+                <td>{{diagnostic.MRN}}</td>
                 <td>{{diagnostic.name}}</td>
                 <td>{{diagnostic.diagnosticPeriod}}</td>
                 <td>{{diagnostic.encounterType}}</td>
