@@ -60,7 +60,7 @@ app.controller('TableCtrl', function ($scope, $http) {
         // getDiagnosticData($scope, $http, Diagnostic); start
 
         $scope.search = function () {
-            var url = "http://192.168.10.97:5000/search.html";
+            var url = "http://101.37.36.41:5000/search.html";
             window.location.href = url;
         }
     }
