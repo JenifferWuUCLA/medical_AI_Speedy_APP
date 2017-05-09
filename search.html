@@ -53,12 +53,12 @@
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">Medical AI Search</a>
+      <a class="navbar-brand" href="#">医护微定制应用产品</a>
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <form id="boxid" class="form-inline mt-2 mt-md-0 ml-auto">
           <div class="input-group">
-            <span style="color:deepskyblue;size:5px">Alfonso Barragan
+            <span style="color:deepskyblue;size:5px">高瑞琳
               <img style="height:40px;width:35px" src="image/doctor_avatar.png" />
             </span>
             <input class="form-control mr-sm-2" ng-model="searchText" placeholder="Search" type="search" ng-change="search()" ng-click="dialog={open: true}"/>
@@ -123,7 +123,7 @@
             <li class="nav-item">
               <a class="nav-link active" href="#">
                 <span class="active" style="color:white"><bold>2、</bold></span>
-                <span style="color:greenyellow"><bold>Search results </bold></span>
+                <span style="color:greenyellow"><bold>病人搜索结果 </bold></span>
               </a>
             </li>
           </ul>
@@ -134,21 +134,19 @@
             <table class="table table-striped table-hover data-table myTable">
               <thead>
               <tr>
-                <th class="EmpId"><a href="#" ng-click="sort('name',$event)">Name
-                  <span class="{{Header[0]}}"></span>
-                </a>
-
+                <th class="EmpId"><a href="#" ng-click="sort('name',$event)">病人姓名
+                  <span class="{{Header[0]}}"></span></a>
                 </th>
-                <th class="name"><a ng-click="sort('DOB')" href="#"> DOB
+                <th class="name"><a ng-click="sort('DOB')" href="#"> 病人出生日期
                   <span class="{{Header[1]}}"></span></a>
                 </th>
-                <th class="Email"><a ng-click="sort('age')" href="#"> AGE
+                <th class="Email"><a ng-click="sort('age')" href="#"> 病人年龄
                   <span class="{{Header[2]}}"></span></a>
                 </th>
-                <th class="Email"><a ng-click="sort('gender')" href="#"> GENDER
+                <th class="Email"><a ng-click="sort('gender')" href="#"> 病人性别
                   <span class="{{Header[3]}}"></span></a>
                 </th>
-                <th class="Email"><a ng-click="sort('zipcode')" href="#"> ZIP CODE
+                <th class="Email"><a ng-click="sort('zipcode')" href="#"> 邮政编码
                   <span class="{{Header[4]}}"></span></a>
                 </th>
               </tr>
@@ -156,8 +154,8 @@
               <tbody>
               <tr ng-repeat="item in ItemsByPage[currentPage] | orderBy:columnToOrder:reverse" ng-click="detail(item.MRN)">
                 <td>{{item.name}}</td>
-                <td>{{item.DOB|date:"MM/dd/y"}}</td>
-                <td>{{item.age}}</td>
+                <td>{{item.DOB|date:"y年MM月dd日"}}</td>
+                <td>{{item.age}}岁</td>
                 <td>{{item.gender}}</td>
                 <td>{{item.zipcode}}</td>
               </tr>
