@@ -204,6 +204,10 @@ app.controller('Ctrl', function ($scope, $http, $filter, filteredListService) {
         $scope.pagination();
     };
 
+    $scope.detail = function (MRN) {
+        var url = "http://101.37.36.41:5000/detail.html?MRN=" + MRN;
+        window.location.href = url;
+    }
 
 });
 

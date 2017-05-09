@@ -20,7 +20,7 @@
     <script src="js/angular-resource.min.js"></script>
     <script src="js/angular-animate.min.js"></script>
     <script src="js/ngProgress.min.js"></script>
-    <script src="js/toaster.js"></script>-->
+    <script src="js/toaster.js"></script>
     <!--<script src="app/app.js"></script>-->
     <!--<script src="app/patients.js"></script>-->
     <script src="app/search.ctrl.js"></script>
@@ -154,7 +154,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="item in ItemsByPage[currentPage] | orderBy:columnToOrder:reverse">
+              <tr ng-repeat="item in ItemsByPage[currentPage] | orderBy:columnToOrder:reverse" ng-click="detail(item.MRN)">
                 <td>{{item.name}}</td>
                 <td>{{item.DOB|date:"MM/dd/y"}}</td>
                 <td>{{item.age}}</td>

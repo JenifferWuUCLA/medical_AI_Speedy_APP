@@ -12,13 +12,14 @@ app.controller('TableCtrl', function ($scope, $http) {
         'Accept': 'application/json'
     };
 
-    var patient_name = 'Marry Grant';
+    var url = window.location.href;
+    var MRN = url.split("?MRN=")[1];
 
     $scope.refresh = function() {
         // getProfileData($scope, $http, Patient); start
         //$scope.profile = Patient.query();
 
-        var url = "http://101.37.36.41:3020/api/patients?name=" + patient_name;
+        var url = "http://101.37.36.41:3020/api/patients?MRN=" + MRN;
 
         $http({
             method: 'GET',
@@ -40,7 +41,7 @@ app.controller('TableCtrl', function ($scope, $http) {
         // getDiagnosticData($scope, $http, Diagnostic); start
         //$scope.diagnostic = Diagnostic.query();
 
-        var url = "http://101.37.36.41:3020/api/diagnostics?name=" + patient_name;
+        var url = "http://101.37.36.41:3020/api/diagnostics?MRN=" + MRN;
 
         $http({
             method: 'GET',
