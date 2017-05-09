@@ -16,6 +16,6 @@ The steps are as follows:
 
 ![Search Page](https://github.com/JenifferWuUCLA/medical_AI_Speedy_APP/blob/master/image/Speedy%20app%20search%20page.png)
 
-5. Go to [http://101.37.36.41:5000/detail.html](http://101.37.36.41:5000/detail.html) in your browser to see the application's patient diagnostic page.
+5. Choose one patient record on the "Search Results" page in your browser to see the application's patient diagnostic page.
 
 ![Search Page](https://github.com/JenifferWuUCLA/medical_AI_Speedy_APP/blob/master/image/Speedy%20app%20diagnostic%20page.png)
