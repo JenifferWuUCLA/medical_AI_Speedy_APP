@@ -6,7 +6,7 @@
 The steps are as follows:
 1. Navigate to the `medical_AI_Speedy_APP` directory from the command line and run `serve`.
 
-2. Go to [http://101.37.36.41:3005/#/](http://101.37.36.41:3005/#/) in your browser to see the FormIO's medical AI forms information.
+2. Go to [http://101.37.36.41:3005/](http://101.37.36.41:3005/) in your browser to see the FormIO's medical AI forms information.
 
 ![Index Page](https://github.com/JenifferWuUCLA/medical_AI_Speedy_APP/blob/master/image/Formio%20patient%20MRN.png)
 
