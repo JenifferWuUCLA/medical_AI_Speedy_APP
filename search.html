@@ -49,7 +49,7 @@
     <!--<div ng-controller="RadioController">-->
     <div ng-controller="Ctrl as ctrl">
     <input type="text" name="dummyData" ng-model="dummyData" style="display: none;"/>
-    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <nav class="navbar navbar-toggleable-md navbar-light fixed-top bg-faded">
       <button class="navbar-toggler navbar-toggler-right hidden-lg-up" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -58,7 +58,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <form id="boxid" class="form-inline mt-2 mt-md-0 ml-auto">
           <div class="input-group">
-            <span style="color:deepskyblue;size:5px">高瑞琳
+            <span style="color:dodgerblue;size:5px;font-weight:bold">高瑞琳
               <img style="height:40px;width:35px" src="image/doctor_avatar.png" />
             </span>
             <input class="form-control mr-sm-2" ng-model="searchText" placeholder="Search" type="search" ng-change="search()" ng-click="dialog={open: true}"/>
@@ -119,11 +119,11 @@
     <div class="container-fluid">
       <div class="row">
         <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-          <ul class="nav nav-pills flex-column">
+          <ul class="nav nav-tabs flex-column">
             <li class="nav-item">
               <a class="nav-link active" href="#">
-                <span class="active" style="color:white"><bold>2、</bold></span>
-                <span style="color:greenyellow"><bold>病人搜索结果 </bold></span>
+                <span class="active" style="color:white;background-color:forestgreen;font-weight:bold">2、</span>
+                <span style="color:forestgreen;font-weight:bold">病人搜索结果 </span>
               </a>
             </li>
           </ul>
