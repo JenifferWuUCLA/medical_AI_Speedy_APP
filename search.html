@@ -86,11 +86,11 @@
               <table style="width:100%">
                 <tr>
                   <td>
-                    <h6>Gender</h6>
+                    <h6>性别</h6>
                   </td>
                   <td style="align:right">
-                    <span><input type="radio" name="SGender" ng-change="RadioChange('Male')" ng-model="Gender" value="M" /> Male </span>
-                    <span><input type="radio" name="SGender" ng-change="RadioChange('Female')" ng-model="Gender" value="F" /> Female </span>
+                    <span><input type="radio" name="SGender" ng-change="RadioChange('男性')" ng-model="Gender" value="M" /> 男性 </span>
+                    <span><input type="radio" name="SGender" ng-change="RadioChange('女性')" ng-model="Gender" value="F" /> 女性 </span>
                   </td>
                 </tr>
               </table>
@@ -101,10 +101,10 @@
               <table style="width:100%">
                 <tr>
                   <td>
-                    <h6>DOB</h6	>
+                    <h6>出生日期</h6	>
                   </td>
                   <td style="align:right">
-                    <ng-datepicker ng-model="ctrl.dobDate" ng-change="DateChange()" first-week-day-sunday="true" placeholder="MM/DD/YYYY" format="MM/DD/YYYY" view-format="MM/DD/YYYY">
+                    <ng-datepicker ng-model="ctrl.dobDate" ng-change="DateChange()" first-week-day-sunday="true" placeholder="MM/DD/YYYY" format="YYYY年MM月DD日" view-format="MM/DD/YYYY">
                     </ng-datepicker>
                   </td>
                 </tr>

@@ -213,6 +213,9 @@ app.controller('Ctrl', function ($scope, $http, $filter, filteredListService) {
 
 function searchUtil(item, toSearch) {
     /* Search Text in all 3 fields */
-    //alert(item.name.toLowerCase().indexOf(toSearch.toLowerCase()) );
-    return (item.name.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || item.DOB == toSearch || item.age == toSearch || item.gender == toSearch || item.zipcode == toSearch) ? true : false;
+    //alert(item.name);
+    var DOB_date = new Date(item.DOB);
+    var formatted_DOB = moment(DOB_date).format('YYYY年MM月DD日');
+
+    return (item.name.toLowerCase().indexOf(toSearch.toLowerCase()) > -1 || formatted_DOB == toSearch || item.age == toSearch || item.gender == toSearch || item.zipcode == toSearch) ? true : false;
 }
